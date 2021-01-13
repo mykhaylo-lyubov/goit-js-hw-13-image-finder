@@ -12,18 +12,15 @@ const debouncedInputCallback = debounce(event => {
   refs.gallery.innerHTML = '';
   pageNumber = 1;
   searchQuery = event.target.value;
-  console.log(pageNumber);
-
   getRequest(searchQuery, pageNumber).then(({ data: { hits } }) =>
     refs.gallery.insertAdjacentHTML('beforeend', listMarkup(hits)),
   );
-
+  refs.loadMoreBtn.classList.remove('is-hidden');
   return searchQuery;
 }, 500);
 
 function loadMoreButtonHandler() {
   pageNumber += 1;
-  console.log(pageNumber);
   getRequest(searchQuery, pageNumber).then(({ data: { hits } }) =>
     refs.gallery.insertAdjacentHTML('beforeend', listMarkup(hits)),
   );
@@ -31,4 +28,6 @@ function loadMoreButtonHandler() {
 
 refs.form.addEventListener('input', debouncedInputCallback);
 
-refs.loadMoreBtn.addEventListener('click', loadMoreButtonHandler);
+refs.loadMoreBtn.addEventListener('click', () => {
+  loadMoreButtonHandler();
+});
