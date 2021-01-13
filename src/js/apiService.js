@@ -1,17 +1,16 @@
 import axios from 'axios';
 import './eventListener';
 
-const key = '19860281-90612ce799b065a61c0a9e7bf';
-const pageNumber = 1;
+const API_KEY = '19860281-90612ce799b065a61c0a9e7bf';
+const itemsPerPage = 12;
 
-axios.defaults.baseURL = `https://pixabay.com/api/?key=${key}`;
+axios.defaults.baseURL =
+  'https://pixabay.com/api/?image_type=photo&orientation=horizontal';
 
-// const searchQuery = 'cat';
-
-function getRequest(searchQuery) {
-  const url = `/?image_type=photo&orientation=horizontal&q=${searchQuery}&page=${pageNumber}&per_page=12`;
-  const result = axios.get(`${url}`);
-  return result;
+function getRequest(searchQuery, pageNumber) {
+  return axios.get(
+    `&key=${API_KEY}&q=${searchQuery}&page=${pageNumber}&per_page=${itemsPerPage}`,
+  );
 }
 
 export default getRequest;
