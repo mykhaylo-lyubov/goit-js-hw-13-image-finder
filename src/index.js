@@ -12,6 +12,9 @@ const debouncedInputCallback = debounce(event => {
   refs.gallery.innerHTML = '';
   pageNumber = 1;
   searchQuery = event.target.value;
+  if (!searchQuery) {
+    return;
+  }
   getRequest(searchQuery, pageNumber).then(({ data: { hits } }) =>
     refs.gallery.insertAdjacentHTML('beforeend', listMarkup(hits)),
   );
