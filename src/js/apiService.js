@@ -2,7 +2,7 @@ import axios from 'axios';
 import './eventListener';
 
 const API_KEY = '19860281-90612ce799b065a61c0a9e7bf';
-const itemsPerPage = 12;
+const itemsPerPage = 5;
 
 axios.defaults.baseURL =
   'https://pixabay.com/api/?image_type=photo&orientation=horizontal';
