@@ -6,8 +6,7 @@ import refs from './js/refs';
 import debounce from 'lodash.debounce';
 import getRequest from './js/apiService';
 import listMarkup from './templates-handlebars/listMarkup.hbs';
-
-import * as basicLightbox from 'basiclightbox';
+import modalShow from './js/modal-show';
 
 let pageNumber = null;
 let searchQuery = null;
@@ -23,16 +22,7 @@ const debouncedInputCallback = debounce(event => {
 
   getRequest(searchQuery, pageNumber).then(({ data: { hits } }) => {
     refs.gallery.insertAdjacentHTML('beforeend', listMarkup(hits));
-
-    const image = document.querySelectorAll('img');
-    image.forEach(el =>
-      el.addEventListener('click', event => {
-        const instance = basicLightbox.create(
-          `<img src="${el.dataset.largeImageUrl}">`,
-        );
-        instance.show();
-      }),
-    );
+    modalShow();
   });
 
   refs.loadMoreBtn.classList.remove('is-hidden');
@@ -43,6 +33,7 @@ function loadMoreButtonHandler() {
   pageNumber += 1;
   getRequest(searchQuery, pageNumber).then(({ data: { hits } }) => {
     refs.gallery.insertAdjacentHTML('beforeend', listMarkup(hits));
+    modalShow();
   });
 }
 
