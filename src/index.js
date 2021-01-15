@@ -7,6 +7,11 @@ import debounce from 'lodash.debounce';
 import getRequest from './js/apiService';
 import listMarkup from './templates-handlebars/listMarkup.hbs';
 import modalShow from './js/modal-show';
+import { info } from '@pnotify/core';
+import '@pnotify/core/dist/BrightTheme.css';
+import '@pnotify/core/dist/PNotify.css';
+import { defaults } from '@pnotify/core';
+defaults.delay = 1000;
 
 let pageNumber = null;
 let searchQuery = null;
@@ -20,9 +25,10 @@ const debouncedInputCallback = debounce(event => {
     return;
   }
 
-  getRequest(searchQuery, pageNumber).then(({ data: { hits } }) => {
+  getRequest(searchQuery, pageNumber).then(({ data: { total, hits } }) => {
     refs.gallery.insertAdjacentHTML('beforeend', listMarkup(hits));
     modalShow();
+    info({ text: `Was found ${total} pictures` });
   });
 
   refs.loadMoreBtn.classList.remove('is-hidden');
