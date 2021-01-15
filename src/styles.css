@@ -12,10 +12,24 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  margin: 0;
 }
 
 .title {
+  font-family: serif;
   text-align: center;
+}
+
+.title .almost {
+  color: blue;
+}
+
+.title .google {
+  color: red;
+}
+
+.title .images {
+  color: green;
 }
 
 .search-form {
@@ -23,5 +37,54 @@ body {
 }
 
 .is-hidden {
-  display: none;
+  visibility: hidden;
+}
+
+.gallery {
+  list-style: none;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 24px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.photo-card img {
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.photo-card img:hover {
+  display: block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+}
+
+.stats i {
+  display: inline-flex;
+  vertical-align: middle;
+  margin-right: 5px;
+  color: blue;
+}
+
+.load-more-button {
+  display: block;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  color: yellow;
+  background-color: rebeccapurple;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.load-more-button:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 2px solid red;
 }
