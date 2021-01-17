@@ -72,7 +72,13 @@ body {
   color: blue;
 }
 
-.load-more-button {
+.io {
+  display: block;
+  width: 10px;
+  height: 10px;
+}
+
+/* .load-more-button {
   display: block;
   width: 100px;
   height: 30px;
@@ -87,4 +93,4 @@ body {
 .load-more-button:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border: 2px solid red;
-}
+} */
