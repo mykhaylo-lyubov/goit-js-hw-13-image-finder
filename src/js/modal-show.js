@@ -1,15 +1,13 @@
 import * as basicLightbox from 'basiclightbox';
+import refs from '../js/refs';
 
 function modalShow() {
-  const image = document.querySelectorAll('img');
-  image.forEach(el =>
-    el.addEventListener('click', event => {
-      const instance = basicLightbox.create(
-        `<img src="${el.dataset.largeImageUrl}">`,
-      );
-      instance.show();
-    }),
-  );
+  refs.gallery.addEventListener('click', event => {
+    const instance = basicLightbox.create(
+      `<img src="${event.target.dataset.largeImageUrl}">`,
+    );
+    instance.show();
+  });
 }
 
 export default modalShow;

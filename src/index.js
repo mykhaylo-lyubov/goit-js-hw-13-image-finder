@@ -61,7 +61,6 @@ function loadExtraPictures() {
   pageNumber += 1;
   getRequest(searchQuery, pageNumber).then(({ data: { hits } }) => {
     refs.gallery.insertAdjacentHTML('beforeend', listMarkup(hits));
-    modalShow();
   });
 }
 
